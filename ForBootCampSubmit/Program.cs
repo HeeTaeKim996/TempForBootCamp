@@ -1,14 +1,18 @@
-﻿
+﻿using System;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Xml.XPath;
 
 namespace hellWorld
 {
-    public class Mycollection
+    public class Mycollection<T>
     {
-        public List<string> list = new List<string>();
+        public List<T> list = new List<T>();
 
-        public void Add(string newString)
+        public void Add(T newValue)
         {
-            list.Add(newString);
+            list.Add(newValue);
         }
 
         public void RemoveAt(int index)
@@ -21,7 +25,7 @@ namespace hellWorld
             return list.Count;
         }
 
-        public string this[int index]
+        public T this[int index]
         {
             get
             {
@@ -38,7 +42,7 @@ namespace hellWorld
     {
         static void Main(String[] args)
         {
-            Mycollection collection = new Mycollection();
+            Mycollection<String> collection = new Mycollection<string>();
 
             collection.Add("Hello");
             collection.Add("World");
@@ -50,6 +54,16 @@ namespace hellWorld
 
             collection[0] = "Hell";
             Console.WriteLine(collection[0]);
+
+
+
+            Mycollection<int> collectionInt = new Mycollection<int>();
+
+            collectionInt.Add(12);
+            collectionInt.Add(23);
+
+            Console.WriteLine(collectionInt[1]);
+
         }
     }
 }
